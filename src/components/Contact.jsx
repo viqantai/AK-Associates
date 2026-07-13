@@ -1,34 +1,43 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
-import { site, telLink, mailLink, waLink } from "@/data/site";
+import { motion } from 'framer-motion';
+import { Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react';
+import { site, waLink } from '@/data/site';
 
 const items = [
   {
     icon: Phone,
-    label: "Call Us",
-    value: site.phoneDisplay,
-    href: telLink,
+    label: 'Call Us',
+    links: site.team.map((m) => ({
+      text: m.phoneDisplay,
+      href: `tel:${m.phone}`,
+    })),
   },
   {
     icon: MessageCircle,
-    label: "WhatsApp",
-    value: "Chat with us",
-    href: waLink,
+    label: 'WhatsApp',
+    links: [{ text: 'Chat with us', href: waLink, external: true }],
   },
   {
     icon: Mail,
-    label: "Email",
-    value: site.email,
-    href: mailLink,
+    label: 'Email',
+    links: site.team.map((m) => ({
+      text: m.email,
+      href: `mailto:${m.email}`,
+    })),
   },
   {
     icon: MapPin,
-    label: "Address",
-    value: site.address,
-    href: "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent("Vijay Laxmi Complex Indira Nagar Nirmal 504106"),
+    label: 'Address',
+    links: [
+      {
+        text: site.address,
+        href:
+          'https://www.google.com/maps/search/?api=1&query=' +
+          encodeURIComponent('Vijay Laxmi Complex Indira Nagar Nirmal 504106'),
+        external: true,
+      },
+    ],
   },
 ];
 
@@ -59,11 +68,8 @@ export default function Contact() {
           {/* Left: contact cards */}
           <div className="grid gap-5 sm:grid-cols-2">
             {items.map((item, i) => (
-              <motion.a
+              <motion.div
                 key={item.label}
-                href={item.href}
-                target={item.label === "Address" || item.label === "WhatsApp" ? "_blank" : undefined}
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -74,10 +80,20 @@ export default function Contact() {
                   <item.icon size={22} />
                 </div>
                 <h3 className="mt-4 font-bold text-white">{item.label}</h3>
-                <p className="mt-1 break-words text-sm text-gray-400">
-                  {item.value}
-                </p>
-              </motion.a>
+                <div className="mt-1 space-y-1">
+                  {item.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      className="block break-words text-sm text-gray-400 transition-colors hover:text-brand"
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
             ))}
 
             {/* Working hours (not a link) */}
@@ -91,9 +107,7 @@ export default function Contact() {
               <div className="flex items-center gap-3">
                 <Clock size={20} className="text-brand" />
                 <p className="text-sm text-gray-300">
-                  <span className="font-semibold text-white">
-                    Mon – Sat:
-                  </span>{" "}
+                  <span className="font-semibold text-white">Mon – Sat:</span>{' '}
                   9:00 AM – 7:00 PM
                 </p>
               </div>
@@ -112,7 +126,7 @@ export default function Contact() {
               title="AK Associates Location"
               src="https://www.google.com/maps?q=Indira+Nagar+Main+Road,+Nirmal,+Telangana+504106&output=embed"
               className="h-80 w-full lg:h-full"
-              style={{ border: 0, minHeight: "320px" }}
+              style={{ border: 0, minHeight: '320px' }}
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"

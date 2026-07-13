@@ -1,12 +1,12 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* AK Associates brand colors */
-  --color-brand: #b91c1c;        /* flyer red */
-  --color-brand-dark: #7f1d1d;   /* darker red for hover */
-  --color-ink: #1f2937;          /* charcoal text */
-  --color-ink-light: #4b5563;    /* gray text */
-  --color-surface: #f9fafb;      /* light section background */
+  --color-brand: #b91c1c; /* flyer red */
+  --color-brand-dark: #7f1d1d; /* darker red for hover */
+  --color-ink: #1f2937; /* charcoal text */
+  --color-ink-light: #4b5563; /* gray text */
+  --color-surface: #f9fafb; /* light section background */
 }
 
 html {
@@ -17,4 +17,5 @@ body {
   color: var(--color-ink);
   background: #ffffff;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: clip;
 }
