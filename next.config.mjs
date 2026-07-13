@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  output: 'export',        // static site — generates /out folder
+  images: { unoptimized: true }, // required for static export with <Image>
 };
 
 export default nextConfig;

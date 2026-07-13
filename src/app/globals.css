@@ -1,26 +1,20 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* AK Associates brand colors */
+  --color-brand: #b91c1c;        /* flyer red */
+  --color-brand-dark: #7f1d1d;   /* darker red for hover */
+  --color-ink: #1f2937;          /* charcoal text */
+  --color-ink-light: #4b5563;    /* gray text */
+  --color-surface: #f9fafb;      /* light section background */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  background: #ffffff;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
