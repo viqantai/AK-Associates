@@ -88,11 +88,20 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
-          <span className="text-2xl font-extrabold tracking-tight text-brand">
-            AK
-          </span>
-          <span className="text-lg font-bold text-ink">ASSOCIATES</span>
+        <a href="#home" className="flex items-center gap-2.5">
+          <img
+            src="/logo/logo-navbar-icon.png"
+            alt="AK Associates Logo"
+            className="h-9 w-9 rounded-lg object-cover"
+          />
+          <div className="flex flex-col leading-tight">
+            <span className="text-base font-extrabold tracking-tight text-brand">
+              AK ASSOCIATES
+            </span>
+            <span className="text-[10px] font-medium tracking-wide text-ink-light">
+              Builders & Construction
+            </span>
+          </div>
         </a>
 
         {/* Desktop links */}

@@ -14,10 +14,13 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 md:px-8 lg:grid-cols-3">
         {/* Brand */}
         <div>
-          <p className="text-xl font-extrabold">
-            <span className="text-brand">AK</span>{' '}
-            <span className="text-white">ASSOCIATES</span>
-          </p>
+          <a href="#home">
+            <img
+              src="/logo/logo_main.jpeg"
+              alt="AK Associates"
+              className="h-24 w-auto"
+            />
+          </a>
           <p className="mt-3 text-sm leading-relaxed">
             {site.tagline}. Led by {site.owner}, {site.ownerTitle}.
           </p>
